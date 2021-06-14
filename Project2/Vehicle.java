@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Vehicle {
 
     protected String licensePlate;
@@ -16,15 +18,21 @@ public class Vehicle {
     }
 
     public void shines() {
-        System.out.println(this.getClass().getName() + " " + this.licensePlate + " shines.");
+        Random random = new Random();
+        int randomInt = random.nextInt(100);
+        if (randomInt > 30) {
+            System.out.println(this.getClass().getName() + " " + this.getLicensePlate() + " shines.");
+        } else {
+            System.out.println(this.getClass().getName() + " " + this.getLicensePlate() + " sparkles.");
+        }
     }
 
     public void runs() {
         System.out.println(this.getClass().getName() + " " + this.licensePlate + " runs.");
     }
 
-    public void drives() {
-        System.out.println(this.getClass().getName() + " " + this.licensePlate + " drives.");
+    public String drives() {
+        return "drives";
     }
 
     public void locked() {

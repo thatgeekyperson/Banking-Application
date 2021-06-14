@@ -5,10 +5,14 @@ public class Garage {
 
     public static void main(String[] args) {
 
-        // TODO: take input
-        int numberOfDays = 2;
+        int numberOfDays = 10;
 
-        Mechanic mechanic1 = new Mechanic("Marco");
+        List<String> mechanicNames = new ArrayList<>();
+        mechanicNames.add("Marco");
+        mechanicNames.add("Paula");
+        mechanicNames.add("Robert");
+        Mechanic mechanic1 = new Mechanic(mechanicNames.get(0));
+        mechanicNames.remove(0);
 
         Bike b1 = new Bike();
         Bike b2 = new Bike();
@@ -81,9 +85,18 @@ public class Garage {
                 v.runs();
             }
             System.out.println();
-            for(Vehicle v : vehiclesInGarage) {
+
+            for(int ind = 0; ind < vehiclesInGarage.size(); ind++) {
+                Vehicle v = vehiclesInGarage.get(ind);
                 mechanic1.testDrive(v);
-                v.drives();
+                String d = v.drives();
+                System.out.println(v.getClass().getName() + " " + v.getLicensePlate() + " " + d + ".");
+                if(v.getClass().getName().equals("Monster") && d.equals("crashes")) {
+                    vehiclesInGarage.remove(ind);
+                    ind = ind - 1;
+                    mechanic1 = new Mechanic(mechanicNames.get(0));
+                    mechanicNames.remove(0);
+                }
             }
             System.out.println();
             for(Vehicle v : vehiclesInGarage) {
