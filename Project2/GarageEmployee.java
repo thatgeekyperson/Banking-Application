@@ -14,5 +14,4 @@ public abstract class GarageEmployee {
 
     public void lockUp(Vehicle v) {
     }
-
 }

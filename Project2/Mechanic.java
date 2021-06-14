@@ -11,18 +11,18 @@ public class Mechanic extends GarageEmployee {
     }
 
     public void wash(Vehicle v) {
-
+        System.out.println("Mechanic " + this.name + " washes " + v.getClass().getName() + " " + v.getLicensePlate());
     }
 
     public void tuneUp(Vehicle v) {
-
+        System.out.println("Mechanic " + this.name + " tunes up " + v.getClass().getName() + " " + v.getLicensePlate());
     }
 
     public void testDrive(Vehicle v) {
-
+        System.out.println("Mechanic " + this.name + " test drives " + v.getClass().getName() + " " + v.getLicensePlate());
     }
 
     public void lockUp(Vehicle v) {
-
+        System.out.println("Mechanic " + this.name + " locks up " + v.getClass().getName() + " " + v.getLicensePlate());
     }
 }
