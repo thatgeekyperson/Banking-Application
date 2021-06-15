@@ -4,7 +4,7 @@ public class Bike extends Motorcycle {
     static int counter = 0;
 
     Bike() {
-        super.licensePlate = super.initLicensePlate(counter++);
+        //Abstraction: initLicensePlate implementation details are hidden
+        super.setLicensePlate(super.initLicensePlate(counter++));
     }
-
 }

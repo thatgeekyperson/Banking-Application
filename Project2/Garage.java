@@ -1,11 +1,16 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Garage {
 
     public static void main(String[] args) {
 
-        int numberOfDays = 10;
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of days : ");
+        int numberOfDays = sc.nextInt();
+
+//        int numberOfDays = 10;
 
         List<String> mechanicNames = new ArrayList<>();
         mechanicNames.add("Marco");
@@ -69,20 +74,21 @@ public class Garage {
         vehiclesInGarage.add(f2);
 
         for(int counter = 0; counter < numberOfDays; counter++) {
-            System.out.println("Day " + (counter+1));
+            System.out.println("Mechanic " + mechanic1.getName() + " arrives at Garage on Day " + (counter+1) + ".");
             for(Vehicle v : vehiclesInGarage) {
                 mechanic1.unlock(v);
-                v.unlocked();
+                // Polymorphism: Bike class is calling method defined in Vehicle
+                System.out.println(v.getClass().getName() + " " + v.getLicensePlate() + " " + v.unlocked() + ".");
             }
             System.out.println();
             for(Vehicle v : vehiclesInGarage) {
                 mechanic1.wash(v);
-                v.shines();
+                System.out.println(v.getClass().getName() + " " + v.getLicensePlate() + " " + v.shines() + ".");
             }
             System.out.println();
             for(Vehicle v : vehiclesInGarage) {
                 mechanic1.tuneUp(v);
-                v.runs();
+                System.out.println(v.getClass().getName() + " " + v.getLicensePlate() + " " + v.runs() + ".");
             }
             System.out.println();
 
@@ -94,16 +100,18 @@ public class Garage {
                 if(v.getClass().getName().equals("Monster") && d.equals("crashes")) {
                     vehiclesInGarage.remove(ind);
                     ind = ind - 1;
+                    System.out.println("Mechanic " + mechanic1.getName() + " leaves at Garage. ");
                     mechanic1 = new Mechanic(mechanicNames.get(0));
                     mechanicNames.remove(0);
+                    System.out.println("Mechanic " + mechanic1.getName() + " arrives at Garage. ");
                 }
             }
             System.out.println();
             for(Vehicle v : vehiclesInGarage) {
                 mechanic1.lockUp(v);
-                v.locked();
+                System.out.println(v.getClass().getName() + " " + v.getLicensePlate() + " " + v.locked() + ".");
             }
-
+            System.out.println("Mechanic " + mechanic1.getName() + " leaves at Garage on Day " + (counter+1) +".");
             System.out.println();
         }
 

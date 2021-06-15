@@ -2,10 +2,16 @@ import java.util.Random;
 
 public class Vehicle {
 
-    protected String licensePlate;
+    //encapsulation: licensePlate is hidden via private access modifier and can be accessed via getters/setters
+    //Identity of Vehicle
+    private String licensePlate;
 
     public String getLicensePlate() {
         return licensePlate;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
     }
 
     public String initLicensePlate(int counter) {
@@ -13,30 +19,30 @@ public class Vehicle {
         return this.getClass().getName().toCharArray()[0]+String.format("%05d", counter);
     }
 
-    public void unlocked() {
-        System.out.println(this.getClass().getName() + " " + this.licensePlate + " unlocked.");
+    public String unlocked() {
+        return "unlocked";
     }
 
-    public void shines() {
+    public String shines() {
         Random random = new Random();
         int randomInt = random.nextInt(100);
         if (randomInt > 30) {
-            System.out.println(this.getClass().getName() + " " + this.getLicensePlate() + " shines.");
+            return "shines";
         } else {
-            System.out.println(this.getClass().getName() + " " + this.getLicensePlate() + " sparkles.");
+            return "sparkles";
         }
     }
 
-    public void runs() {
-        System.out.println(this.getClass().getName() + " " + this.licensePlate + " runs.");
+    public String runs() {
+        return "runs";
     }
 
     public String drives() {
         return "drives";
     }
 
-    public void locked() {
-        System.out.println(this.getClass().getName() + " " + this.licensePlate + " locked.");
+    public String locked() {
+        return "locked";
     }
 }
 
