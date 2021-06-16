@@ -14,7 +14,8 @@ public abstract class GarageEmployee {
         return name;
     }
 
-    // All the methods listed below can be overridden from the subclass Mechanic
+    // all the methods listed below can be overridden from the subclass Mechanic
+    // base implementation of methods
     public void unlock(Vehicle v) {
         // https://stackoverflow.com/questions/6271417/java-get-the-current-class-name
         System.out.println(this.getClass().getName() + " " + this.getName() + " unlocks " + v.getClass().getName() + " " + v.getLicensePlate() + ".");

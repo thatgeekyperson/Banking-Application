@@ -19,6 +19,7 @@ public class Vehicle {
         return this.getClass().getName().toCharArray()[0]+String.format("%05d", counter);
     }
 
+    // base implementation of methods
     public String unlocked() {
         return "unlocked";
     }
