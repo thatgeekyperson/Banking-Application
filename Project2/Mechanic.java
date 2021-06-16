@@ -5,5 +5,5 @@ public class Mechanic extends GarageEmployee {
         super(name);
     }
 
-    //Abstract class: methods being inherited from abstract class and provided a different definition
+    //Abstract class: methods being inherited from abstract class
 }

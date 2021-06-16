@@ -2,12 +2,13 @@ import java.util.Random;
 
 public class Monster extends Truck {
     //Monster is inheriting the class Truck
-    static int counter = 0;
 
+    static int counter = 0;
     Monster() {
         super.setLicensePlate(super.initLicensePlate(counter++));
     }
 
+    // Polymorphism: runs method of Monster will be called
     @Override
     public String drives() {
         Random random = new Random();

@@ -6,12 +6,12 @@ public class Garage {
 
     public static void main(String[] args) {
 
+        // input number of days
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter number of days : ");
         int numberOfDays = sc.nextInt();
 
-//        int numberOfDays = 10;
-
+        // list of Mechanics available for work
         List<String> mechanicNames = new ArrayList<>();
         mechanicNames.add("Marco");
         mechanicNames.add("Paula");
@@ -19,6 +19,7 @@ public class Garage {
         Mechanic mechanic1 = new Mechanic(mechanicNames.get(0));
         mechanicNames.remove(0);
 
+        // various vehicle instances in garage
         Bike b1 = new Bike();
         Bike b2 = new Bike();
         Trike t1 = new Trike();
@@ -47,6 +48,7 @@ public class Garage {
         FishingBoat f1 = new FishingBoat();
         FishingBoat f2 = new FishingBoat();
 
+        // vehicle list of vehicles in garage
         List<Vehicle> vehiclesInGarage = new ArrayList<>();
         vehiclesInGarage.add(b1);
         vehiclesInGarage.add(b2);
@@ -73,29 +75,34 @@ public class Garage {
         vehiclesInGarage.add(f1);
         vehiclesInGarage.add(f2);
 
-        for(int counter = 0; counter < numberOfDays; counter++) {
+        // processing each day of work
+        for (int counter = 0; counter < numberOfDays; counter++) {
             System.out.println("Mechanic " + mechanic1.getName() + " arrives at Garage on Day " + (counter+1) + ".");
             for(Vehicle v : vehiclesInGarage) {
-                mechanic1.unlock(v);    //Polymorphism: mechanic1 is polymorphically being treated as GarageEmployee since Mechanic inherits GarageEmployee
+                //Polymorphism: mechanic1 is polymorphically being treated as GarageEmployee since Mechanic inherits GarageEmployee
+                mechanic1.unlock(v);
 
                 // Polymorphism: Bike class is calling method defined in Vehicle
                 System.out.println(v.getClass().getName() + " " + v.getLicensePlate() + " " + v.unlocked() + ".");
             }
             System.out.println();
             for(Vehicle v : vehiclesInGarage) {
-                mechanic1.wash(v);       //Polymorphism: mechanic1 is polymorphically being treated as GarageEmployee since Mechanic inherits GarageEmployee
+                //Polymorphism: mechanic1 is polymorphically being treated as GarageEmployee since Mechanic inherits GarageEmployee
+                mechanic1.wash(v);
                 System.out.println(v.getClass().getName() + " " + v.getLicensePlate() + " " + v.shines() + ".");
             }
             System.out.println();
             for(Vehicle v : vehiclesInGarage) {
-                mechanic1.tuneUp(v);      //Polymorphism: mechanic1 is polymorphically being treated as GarageEmployee since Mechanic inherits GarageEmployee
+                //Polymorphism: mechanic1 is polymorphically being treated as GarageEmployee since Mechanic inherits GarageEmployee
+                mechanic1.tuneUp(v);
                 System.out.println(v.getClass().getName() + " " + v.getLicensePlate() + " " + v.runs() + ".");
             }
             System.out.println();
 
             for(int ind = 0; ind < vehiclesInGarage.size(); ind++) {
                 Vehicle v = vehiclesInGarage.get(ind);
-                mechanic1.testDrive(v);      //Polymorphism: mechanic1 is polymorphically being treated as GarageEmployee since Mechanic inherits GarageEmployee
+                //Polymorphism: mechanic1 is polymorphically being treated as GarageEmployee since Mechanic inherits GarageEmployee
+                mechanic1.testDrive(v);
                 String d = v.drives();
                 System.out.println(v.getClass().getName() + " " + v.getLicensePlate() + " " + d + ".");
                 if(v.getClass().getName().equals("Monster") && d.equals("crashes")) {
@@ -109,12 +116,13 @@ public class Garage {
             }
             System.out.println();
             for(Vehicle v : vehiclesInGarage) {
-                mechanic1.lockUp(v);     //Polymorphism: mechanic1 is polymorphically being treated as GarageEmployee since Mechanic inherits GarageEmployee
+                //Polymorphism: mechanic1 is polymorphically being treated as GarageEmployee since Mechanic inherits GarageEmployee
+                mechanic1.lockUp(v);
                 System.out.println(v.getClass().getName() + " " + v.getLicensePlate() + " " + v.locked() + ".");
             }
             System.out.println("Mechanic " + mechanic1.getName() + " leaves at Garage on Day " + (counter+1) +".");
             System.out.println();
         }
-
+        // done processing all the days
     }
 }

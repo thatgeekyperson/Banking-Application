@@ -1,6 +1,7 @@
 public abstract class GarageEmployee {
-    //Abstract class: methods are defined here and can be extended in subclass
-    //An abstract class is a class that is declared abstract—it may or may not include abstract methods. (https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
+    // Abstract class: methods are defined here and can be extended in subclass
+    // An abstract class is a class that is declared abstract—it may or may not include abstract methods.
+    // (https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
 
     // Identity of Mechanic: Each mechanic has a unique name
     private String name;
@@ -12,7 +13,8 @@ public abstract class GarageEmployee {
     public String getName() {
         return name;
     }
-    //All the methods listed below can be called from the subclass Mechanic
+
+    // All the methods listed below can be overridden from the subclass Mechanic
     public void unlock(Vehicle v) {
         // https://stackoverflow.com/questions/6271417/java-get-the-current-class-name
         System.out.println(this.getClass().getName() + " " + this.getName() + " unlocks " + v.getClass().getName() + " " + v.getLicensePlate() + ".");
