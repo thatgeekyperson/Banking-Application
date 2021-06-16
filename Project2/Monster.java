@@ -1,6 +1,7 @@
 import java.util.Random;
 
 public class Monster extends Truck {
+    //Monster is inheriting the class Truck
     static int counter = 0;
 
     Monster() {

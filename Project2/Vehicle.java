@@ -3,7 +3,7 @@ import java.util.Random;
 public class Vehicle {
 
     //encapsulation: licensePlate is hidden via private access modifier and can be accessed via getters/setters
-    //Identity of Vehicle
+    //Identity of Vehicle: Each vehicle has a unique licensePlate
     private String licensePlate;
 
     public String getLicensePlate() {
