@@ -48,6 +48,7 @@ This project is a virtual garage. Using this project, one can complete the follo
 * Add mechanic to the garage
 * Remove mechanic from the garage
 * Perform tasks on the vehicles including: unlock, wash, tuneUp, testDrive, lockUp
+* The tasks get executed.
 * Perform these tasks for n number of days
 
 ### Assumptions
