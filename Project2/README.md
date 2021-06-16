@@ -8,28 +8,35 @@ Each type of vehicle has subclasses as follows: Motorcycle-Bike, Trike, Sidecar;
 Each vehicle has been instantiated atleast twice. The class files for this project are:
 * **Garage.java:** This class contains the main method. Run this class to run the java program.
 
+
 * **Vehicle.java:** This class defines identity for each vehicle in the form of a licensePlate and returns string after a task is completed by the mechanic.
+
 
 * **GarageEmployee.java:** This class is an abstract class being inherited by the class Mechanic. It defines all the methods being performed by the mechanic. 
 * **Mechanic.java:** This class inherits the abstract class GarageEmployee.
+
 
 * **Motorcycle.java:** This class inherits Vehicle.
 * **Car.java:** This class inherits Vehicle.
 * **Truck.java:** This class inherits Vehicle.
 * **Boat.java:** This class inherits Vehicle.
 
+
 * **Bike.java:** This class inherits Motorcycle and initiates licensePlate for each Bike.
 * **Trike.java:** This class inherits Motorcycle and initiates licensePlate for each Trike.
 * **Sidecar.java:** This class inherits Motorcycle and initiates licensePlate for each Sidecar.
+
 
 * **Hatchback.java:** This class inherits Car and initiates licensePlate for each Hatchback.
 * **SUV.java:** This class inherits Car and initiates licensePlate for each SUV.
 * **Wagon.java:** This class inherits Car and initiates licensePlate for each Wagon.
 * **Convertible.java:** This class inherits Car and initiates licensePlate for each Convertible.
 
+
 * **Pickup.java:** This class inherits Truck and initiates licensePlate for each Pickup.
 * **Delivery.java:** This class inherits Truck and initiates licensePlate for each Delivery.
 * **Monster.java:** This class inherits Truck and initiates licensePlate for each Monster.
+
 
 * **LifeBoat.java:** This class inherits Boat and initiates licensePlate for each LifeBoat.
 * **FishingBoat.java:** This class inherits Boat and initiates licensePlate for each FishingBoat.
