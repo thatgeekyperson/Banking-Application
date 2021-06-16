@@ -1,4 +1,4 @@
-# OOAD Project2 (Garage) Readme
+# OOAD Project2 - Garage
 
 ## Tavishi Priyam and Manan Khasgiwale
 
@@ -6,7 +6,7 @@
 Project2 contains the Java code for a garage full of vehicles. There are four different types of vehicles in the garage including Motorcycle, Car,Truck and Boat.
 Each type of vehicle has subclass as follows: Motorcycle-Bike, Trike, Sidecar; Car-Hatchback,SUV,Wagon,Convertible; Truck-Pickup,Delivery,Monster; Boat-Lifeboat,Fishingboat. 
 Each vehicle has been instantiated and there exist atleast two instances of each. The class files for this project are:
-* **Garage.java:**
+* **Garage.java:** 
 * **Vehicle.java:**
 * **GarageEmployee.java:**
 * **Mechanic.java:**
