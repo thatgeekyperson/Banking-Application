@@ -10,6 +10,7 @@ public class Vehicle {
     public Vehicle(UnlockStrategy unlockStrategy) {
         this.unlockStrategy = unlockStrategy;
     }
+    // Strategy pattern implementation on unlock
 
     public String getLicensePlate() {
         return licensePlate;

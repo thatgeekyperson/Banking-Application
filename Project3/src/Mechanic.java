@@ -3,6 +3,9 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class Mechanic extends GarageEmployee implements PropertyChangeListener{
+    // Mechanic is an observer for garageClock and an observable for garageAnnouncer.
+    // https://www.baeldung.com/java-observer-pattern
+    // https://docs.oracle.com/javase/tutorial/uiswing/events/propertychangelistener.html
     // Mechanic is inheriting the GarageEmployee abstract class
 
     private String state;

@@ -1,7 +1,8 @@
 public class CarFactory extends VehicleFactory{
-
+    // Factory pattern implementation
     @Override
     public Vehicle getVehicle(String vehicleType) {
+        // Instantiating cars using factory pattern
         if (vehicleType.equalsIgnoreCase("Convertible")) {
             return new Convertible(new VehicleUnlockStrategy());
         } else if (vehicleType.equalsIgnoreCase("HatchBack")) {

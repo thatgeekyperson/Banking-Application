@@ -2,7 +2,9 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class GarageAnnouncer extends GarageEmployee implements PropertyChangeListener {
-
+    // GarageAnnouncer is an observer. It is implementing the PropertyChangeListener
+    // https://www.baeldung.com/java-observer-pattern
+    // https://docs.oracle.com/javase/tutorial/uiswing/events/propertychangelistener.html
     private String mechanicState;
     private Integer time;
 

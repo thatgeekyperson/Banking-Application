@@ -4,7 +4,9 @@ import java.beans.PropertyChangeSupport;
 import static java.lang.Thread.sleep;
 
 public class GarageClock implements Runnable{
-
+    // GarageClock is an observable for GarageAnnouncer and Mechanic
+    // https://docs.oracle.com/javase/tutorial/uiswing/events/propertychangelistener.html
+    // https://www.baeldung.com/java-observer-pattern
     private Integer time;
     private PropertyChangeSupport support;
 

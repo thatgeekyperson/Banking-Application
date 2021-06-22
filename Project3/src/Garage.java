@@ -20,19 +20,19 @@ public class Garage {
         mechanicNames.remove(0);
 
         // Vehicle factories
-        MotercycleFactory motercycleFactory = new MotercycleFactory();
+        MotorcycleFactory motorcycleFactory = new MotorcycleFactory();
         CarFactory carFactory = new CarFactory();
         TruckFactory truckFactory = new TruckFactory();
         BoatFactory boatFactory = new BoatFactory();
 
         // vehicle list of vehicles in garage
         List<Vehicle> vehiclesInGarage = new ArrayList<>();
-        vehiclesInGarage.add(motercycleFactory.getVehicle("Bike"));
-        vehiclesInGarage.add(motercycleFactory.getVehicle("Bike"));
-        vehiclesInGarage.add(motercycleFactory.getVehicle("Trike"));
-        vehiclesInGarage.add(motercycleFactory.getVehicle("Trike"));
-        vehiclesInGarage.add(motercycleFactory.getVehicle("SideCar"));
-        vehiclesInGarage.add(motercycleFactory.getVehicle("SideCar"));
+        vehiclesInGarage.add(motorcycleFactory.getVehicle("Bike"));
+        vehiclesInGarage.add(motorcycleFactory.getVehicle("Bike"));
+        vehiclesInGarage.add(motorcycleFactory.getVehicle("Trike"));
+        vehiclesInGarage.add(motorcycleFactory.getVehicle("Trike"));
+        vehiclesInGarage.add(motorcycleFactory.getVehicle("SideCar"));
+        vehiclesInGarage.add(motorcycleFactory.getVehicle("SideCar"));
         vehiclesInGarage.add(carFactory.getVehicle("HatchBack"));
         vehiclesInGarage.add(carFactory.getVehicle("HatchBack"));
         vehiclesInGarage.add(carFactory.getVehicle("SUV"));
