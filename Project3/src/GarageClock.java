@@ -11,12 +11,11 @@ public class GarageClock implements Runnable{
     private PropertyChangeSupport support;
 
     GarageClock() {
-        support = new PropertyChangeSupport(this);
+        this.support = new PropertyChangeSupport(this);
     }
 
     public void run() {
         for (int counter = 8; counter <= 20; counter++) {
-            //System.out.println("Loop " + counter + ": " + getName() + ", ID: " + getId() + ", State: " + getState());
             try {
                 sleep((int) (1000));
                 this.setTime(counter);
@@ -27,19 +26,19 @@ public class GarageClock implements Runnable{
     }
 
     public Integer getTime() {
-        return time;
+        return this.time;
     }
 
     public void setTime(Integer time) {
-        support.firePropertyChange("time", this.time, time);
+        this.support.firePropertyChange("time", this.time, time);
         this.time = time;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
-        support.addPropertyChangeListener(pcl);
+        this.support.addPropertyChangeListener(pcl);
     }
 
     public void removePropertyChangeListener(PropertyChangeListener pcl) {
-        support.removePropertyChangeListener(pcl);
+        this.support.removePropertyChangeListener(pcl);
     }
 }

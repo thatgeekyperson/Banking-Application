@@ -117,9 +117,9 @@ public class Garage {
                 System.out.println(v.getClass().getName() + " " + v.getLicensePlate() + " " + v.locked() + ".");
             }
 
+            thread.join();
             System.out.println("Mechanic " + mechanic.getName() + " leaves at Garage on Day " + (counter+1) +".");
             System.out.println();
-            thread.join();
 
             mechanic.removePropertyChangeListener(garageAnnouncer);
             garageClock.removePropertyChangeListener(mechanic);

@@ -33,7 +33,7 @@ public class GarageAnnouncer extends GarageEmployee implements PropertyChangeLis
     }
 
     public String getMechanicState() {
-        return mechanicState;
+        return this.mechanicState;
     }
 
     public void setMechanicState(String mechanicState) {
@@ -41,7 +41,7 @@ public class GarageAnnouncer extends GarageEmployee implements PropertyChangeLis
     }
 
     public Integer getTime() {
-        return time;
+        return this.time;
     }
 
     public void setTime(Integer time) {

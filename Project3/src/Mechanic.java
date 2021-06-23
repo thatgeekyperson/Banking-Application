@@ -14,8 +14,8 @@ public class Mechanic extends GarageEmployee implements PropertyChangeListener{
 
     Mechanic(String name) {
         super(name);
-        setTime(8);
-        support = new PropertyChangeSupport(this);
+        this.setTime(8);
+        this.support = new PropertyChangeSupport(this);
     }
 
     public String getState() {
@@ -34,49 +34,39 @@ public class Mechanic extends GarageEmployee implements PropertyChangeListener{
     public void setState(String state) throws InterruptedException {
         if (state == "unlock") {
             while(this.getTime() < 10) {
-//                System.out.println("Waiting here 10 ...");
                 Thread.sleep(100);
-                continue;
             }
         } else if (state == "wash") {
             while(this.getTime() < 12) {
-//                System.out.println("Waiting here 12 ...");
                 Thread.sleep(100);
-                continue;
             }
         } else if (state == "tune up") {
             while(this.getTime() < 14) {
-//                System.out.println("Waiting here 14 ...");
                 Thread.sleep(100);
-                continue;
             }
         } else if (state == "drive") {
             while(this.getTime() < 16) {
-//                System.out.println("Waiting here 16 ...");
                 Thread.sleep(100);
-                continue;
             }
         } else if (state == "lock up") {
             while(this.getTime() < 18) {
-//                System.out.println("Waiting here 18 ...");
                 Thread.sleep(100);
-                continue;
             }
         }
-        support.firePropertyChange("state", this.state, state);
+        this.support.firePropertyChange("state", this.state, state);
         this.state = state;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
-        support.addPropertyChangeListener(pcl);
+        this.support.addPropertyChangeListener(pcl);
     }
 
     public void removePropertyChangeListener(PropertyChangeListener pcl) {
-        support.removePropertyChangeListener(pcl);
+        this.support.removePropertyChangeListener(pcl);
     }
 
     public Integer getTime() {
-        return time;
+        return this.time;
     }
 
     public void setTime(Integer time) {
