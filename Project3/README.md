@@ -77,19 +77,18 @@ This project is a virtual garage. Using this project, one can complete the follo
 * Only one mechanic can work in the garage at once.
 * One mechanic can work on only one vehicle at a time.
 * The same GarageAnnouncer arrives and leaves every day.
-* Have made providing unlock strategy mandatory by making it the constructor arguement.
+* Have made providing unlock strategy mandatory by making it the constructor argument.
 
 ### Issues encountered
 * One issue that we encountered was figuring out how to remove mechanic from the garage once monster crashes and make 
   the next one pick up where the last one left off.
 * This was resolved by making use of a list to store all the mechanics and removing instance from the list everytime 
   a mechanic stops working.
-* For the Observer Pattern, using the inbuilt Observer/Observable was not possible as the classes were already inheriting. 
-  With user written classes was getting complicated too. Hence, used the PropertyChangeListerner to implement 
-  the Observer pattern.
+* For the Observer Pattern, using the inbuilt Observer/Observable was not possible as the classes were already inheriting the GarageEmployee class. 
+  Hence, we decided to use the PropertyChangeListener to implement the Observer pattern.
 * Running the GarageClock timer in parallel to the other functions was tricky. We used Runnable to run the thread. This 
   also helps in restarting of the thread multiple times.
-  Also, included sleep in mechanic to wait for the exact time to run the event. Sleep was also necessary to give the 
+  Also included sleep in mechanic to wait for the exact time to run the event. Sleep was also necessary to give the 
   control back to other threads running, else the system was getting blocked while waiting for the time to increment.
   This was due to the PropertyChange method not being called.
 
