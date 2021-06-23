@@ -20,10 +20,10 @@ public class Garage {
         mechanicNames.remove(0);
 
         // Vehicle factories
-        MotorcycleFactory motorcycleFactory = new MotorcycleFactory();
-        CarFactory carFactory = new CarFactory();
-        TruckFactory truckFactory = new TruckFactory();
-        BoatFactory boatFactory = new BoatFactory();
+        VehicleFactory motorcycleFactory = new MotorcycleFactory();
+        VehicleFactory carFactory = new CarFactory();
+        VehicleFactory truckFactory = new TruckFactory();
+        VehicleFactory boatFactory = new BoatFactory();
 
         // vehicle list of vehicles in garage
         List<Vehicle> vehiclesInGarage = new ArrayList<>();
@@ -52,8 +52,8 @@ public class Garage {
         vehiclesInGarage.add(boatFactory.getVehicle("LifeBoat"));
         vehiclesInGarage.add(boatFactory.getVehicle("LifeBoat"));
 
-        GarageAnnouncer garageAnnouncer = new GarageAnnouncer("Gary");
         GarageClock garageClock = new GarageClock();
+        GarageAnnouncer garageAnnouncer = new GarageAnnouncer("Gary");
         Thread thread;
 
         // processing each day of work

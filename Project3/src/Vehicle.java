@@ -31,7 +31,7 @@ public class Vehicle {
     }
 
     public String unlocked() {
-        return unlockStrategy.unlockStrategy();
+        return this.unlockStrategy.unlockStrategy();
     }
 
     public String shines() {
