@@ -3,7 +3,8 @@ public class Delivery extends Truck {
 
     static int counter = 0;
     Delivery(UnlockStrategy unlockStrategy) {
-        super(unlockStrategy);
+        super.setUnlockStrategy(unlockStrategy);
         super.setLicensePlate(super.initLicensePlate(counter++));
+        super.setClassName(this.getClass().getName());
     }
 }

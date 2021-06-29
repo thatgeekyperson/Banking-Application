@@ -15,7 +15,7 @@ public class TestDriveCommand implements Command{
         for(Vehicle v: this.vehicleList) {
             mechanic.testDrive(v);
             String d = v.drives();
-            System.out.println(v.getClass().getName() + " " + v.getLicensePlate() + " " + d + ".");
+            System.out.println(v.getClassName() + " " + v.getLicensePlate() + " " + d + ".");
             if(v.getClass().getName().equals("Monster") && d.equals("crashes")) {
                 System.out.println("System exiting due to crash.");
                 System.exit(0);

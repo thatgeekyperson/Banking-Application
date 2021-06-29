@@ -1,7 +1,35 @@
-public abstract class WashingDecorator extends Mechanic {
+public abstract class WashingDecorator extends Vehicle {
 
-    WashingDecorator(String name) {
-        super(name);
+    Vehicle vehicle;
+
+    public WashingDecorator(Vehicle vehicle) {
+        super();
+        this.vehicle = vehicle;
+    }
+
+    @Override
+    public void shines() {
+        vehicle.shines();
+    }
+
+    @Override
+    public UnlockStrategy getUnlockStrategy() {
+        return vehicle.getUnlockStrategy();
+    }
+
+    @Override
+    public String unlocked() {
+        return vehicle.getUnlockStrategy().unlockStrategy();
+    }
+
+    @Override
+    public String getLicensePlate() {
+        return vehicle.getLicensePlate();
+    }
+
+    @Override
+    public String getClassName() {
+        return vehicle.getClassName();
     }
 
 }

@@ -5,8 +5,9 @@ public class Monster extends Truck {
 
     static int counter = 0;
     Monster(UnlockStrategy unlockStrategy) {
-        super(unlockStrategy);
+        super.setUnlockStrategy(unlockStrategy);
         super.setLicensePlate(super.initLicensePlate(counter++));
+        super.setClassName(this.getClass().getName());
     }
 
     // Polymorphism: runs method of Monster will be called

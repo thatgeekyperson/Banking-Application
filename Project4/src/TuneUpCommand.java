@@ -14,7 +14,7 @@ public class TuneUpCommand implements Command{
     public void execute() {
         for(Vehicle v: this.vehicleList) {
             mechanic.tuneUp(v);
-            System.out.println(v.getClass().getName() + " " + v.getLicensePlate() + " " + v.runs() + ".");
+            System.out.println(v.getClassName() + " " + v.getLicensePlate() + " " + v.runs() + ".");
         }
 
     }

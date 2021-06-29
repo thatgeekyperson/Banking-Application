@@ -5,5 +5,6 @@ public class Sidecar extends Motorcycle {
     Sidecar(UnlockStrategy unlockStrategy) {
         super(unlockStrategy);
         super.setLicensePlate(super.initLicensePlate(counter++));
+        super.setClassName(this.getClass().getName());
     }
 }

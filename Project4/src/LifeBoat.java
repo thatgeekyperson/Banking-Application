@@ -3,7 +3,8 @@ public class LifeBoat extends Boat {
 
     static int counter = 0;
     LifeBoat(UnlockStrategy unlockStrategy) {
-        super(unlockStrategy);
+        super.setUnlockStrategy(unlockStrategy);
         super.setLicensePlate(super.initLicensePlate(counter++));
+        super.setClassName(this.getClass().getName());
     }
 }

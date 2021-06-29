@@ -3,7 +3,8 @@ public class SUV extends Car {
 
     static int counter = 50000;
     SUV(UnlockStrategy unlockStrategy) {
-        super(unlockStrategy);
+        super.setUnlockStrategy(unlockStrategy);
         super.setLicensePlate(super.initLicensePlate(counter++));
+        super.setClassName(this.getClass().getName());
     }
 }

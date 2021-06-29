@@ -14,7 +14,8 @@ public class WashCommand implements Command{
     public void execute() {
         for(Vehicle v: this.vehicleList) {
             mechanic.wash(v);
-            System.out.println(v.getClass().getName() + " " + v.getLicensePlate() + " " + v.shines() + ".");
+            v.shines();
+            System.out.println();
         }
 
     }

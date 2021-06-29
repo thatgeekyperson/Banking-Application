@@ -14,7 +14,7 @@ public class LockCommand implements Command{
     public void execute() {
         for(Vehicle v: this.vehicleList) {
             mechanic.lockUp(v);
-            System.out.println(v.getClass().getName() + " " + v.getLicensePlate() + " " + v.locked() + ".");
+            System.out.println(v.getClassName() + " " + v.getLicensePlate() + " " + v.locked() + ".");
         }
 
     }

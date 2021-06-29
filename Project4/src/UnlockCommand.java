@@ -14,7 +14,7 @@ public class UnlockCommand implements Command{
     public void execute() {
         for(Vehicle v: this.vehicleList) {
             mechanic.unlock(v);
-            System.out.println(v.getClass().getName() + " " + v.getLicensePlate() + " " + v.unlocked() + ".");
+            System.out.println(v.getClassName() + " " + v.getLicensePlate() + " " + v.unlocked() + ".");
         }
 
     }

@@ -1,10 +1,10 @@
 import java.util.Random;
 
 public class Car extends Vehicle {
-    public Car(UnlockStrategy unlockStrategy) {
-        super(unlockStrategy);
-    }
     //Car is inheriting the class Vehicle
+//    Car(UnlockStrategy unlockStrategy) {
+//        super.setUnlockStrategy(unlockStrategy);
+//    }
 
     // Polymorphism: runs method of Car will be called
     // for Car and it's subclasses

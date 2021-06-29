@@ -5,5 +5,6 @@ public class Trike extends Motorcycle {
     Trike(UnlockStrategy unlockStrategy) {
         super(unlockStrategy);
         super.setLicensePlate(super.initLicensePlate(counter++));
+        super.setClassName(this.getClass().getName());
     }
 }

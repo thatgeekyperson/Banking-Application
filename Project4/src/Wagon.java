@@ -3,7 +3,8 @@ public class Wagon extends Car {
 
     static int counter = 0;
     Wagon(UnlockStrategy unlockStrategy) {
-        super(unlockStrategy);
+        super.setUnlockStrategy(unlockStrategy);
         super.setLicensePlate(super.initLicensePlate(counter++));
+        super.setClassName(this.getClass().getName());
     }
 }

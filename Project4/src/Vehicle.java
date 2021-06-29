@@ -6,18 +6,27 @@ public class Vehicle {
     //Identity of Vehicle: Each vehicle has a unique licensePlate
     private String licensePlate;
     private UnlockStrategy unlockStrategy;
-
-    public Vehicle(UnlockStrategy unlockStrategy) {
-        this.unlockStrategy = unlockStrategy;
-    }
+    private String className;
     // Strategy pattern implementation on unlock
 
     public String getLicensePlate() {
         return licensePlate;
     }
+    public String getClassName() {
+        return className;
+    }
+    public UnlockStrategy getUnlockStrategy() {
+        return unlockStrategy;
+    }
 
     public void setLicensePlate(String licensePlate) {
         this.licensePlate = licensePlate;
+    }
+    public void setClassName(String className) {
+        this.className = className;
+    }
+    public void setUnlockStrategy(UnlockStrategy unlockStrategy) {
+        this.unlockStrategy = unlockStrategy;
     }
 
     public String initLicensePlate(int counter) {
@@ -25,22 +34,17 @@ public class Vehicle {
         return this.getClass().getName().toCharArray()[0]+String.format("%05d", counter);
     }
 
-    // base implementation of methods
-    public void setUnlockStrategy(UnlockStrategy unlockStrategy) {
-        this.unlockStrategy = unlockStrategy;
-    }
-
     public String unlocked() {
         return this.unlockStrategy.unlockStrategy();
     }
 
-    public String shines() {
+    public void shines() {
         Random random = new Random();
         int randomInt = random.nextInt(100);
         if (randomInt > 30) {
-            return "shines";
+            System.out.print(this.getClassName() + " " + this.getLicensePlate() + " shines. ");
         } else {
-            return "sparkles";
+            System.out.print(this.getClassName() + " " + this.getLicensePlate() + " sparkles. ");
         }
     }
 
