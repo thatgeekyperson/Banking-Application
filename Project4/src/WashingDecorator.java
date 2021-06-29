@@ -1,10 +1,7 @@
-public class WashingDecorator extends Mechanic {
+public abstract class WashingDecorator extends Mechanic {
 
-    Mechanic mechanic;
-
-    WashingDecorator(String name, Mechanic mechanic) {
+    WashingDecorator(String name) {
         super(name);
-        this.mechanic = mechanic;
     }
 
 }

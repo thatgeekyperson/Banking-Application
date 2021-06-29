@@ -18,22 +18,22 @@ public abstract class GarageEmployee {
     // base implementation of methods
     public void unlock(Vehicle v) {
         // https://stackoverflow.com/questions/6271417/java-get-the-current-class-name
-        System.out.print(this.getClass().getName() + " " + this.getName() + " unlocks " + v.getClass().getName() + " " + v.getLicensePlate() + ". ");
+        System.out.print(this.getName() + " unlocking " + v.getClass().getName() + " " + v.getLicensePlate() + ". ");
     }
 
     public void wash(Vehicle v) {
-        System.out.print(this.getClass().getName() + " " + this.getName() + " washes " + v.getClass().getName() + " " + v.getLicensePlate() + ". ");
+        System.out.print(this.getName() + " washing " + v.getClass().getName() + " " + v.getLicensePlate() + ". ");
     }
 
     public void tuneUp(Vehicle v) {
-        System.out.print(this.getClass().getName() + " " + this.getName() + " tunes up " + v.getClass().getName() + " " + v.getLicensePlate() + ". ");
+        System.out.print(this.getName() + " tuning up " + v.getClass().getName() + " " + v.getLicensePlate() + ". ");
     }
 
     public void testDrive(Vehicle v) {
-        System.out.print(this.getClass().getName() + " " + this.getName() + " test drives " + v.getClass().getName() + " " + v.getLicensePlate() + ". ");
+        System.out.print(this.getName() + " test driving " + v.getClass().getName() + " " + v.getLicensePlate() + ". ");
     }
 
     public void lockUp(Vehicle v) {
-        System.out.print(this.getClass().getName() + " " + this.getName() + " locks up " + v.getClass().getName() + " " + v.getLicensePlate() + ". ");
+        System.out.print(this.getName() + " locking up " + v.getClass().getName() + " " + v.getLicensePlate() + ". ");
     }
 }
