@@ -4,9 +4,8 @@ public class SoapWashingDecorator extends WashingDecorator{
         super(vehicle);
     }
 
-    public void shines() {
-        System.out.print(vehicle.getClassName() + " " + vehicle.getLicensePlate() + " Soaped. ");
-        super.shines();
+    public String shines() {
+        return vehicle.getClassName() + " " + vehicle.getLicensePlate() + " Soaped. " + super.shines();
     }
 
 }

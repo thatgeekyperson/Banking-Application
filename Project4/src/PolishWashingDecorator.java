@@ -3,8 +3,7 @@ public class PolishWashingDecorator extends WashingDecorator{
         super(vehicle);
     }
 
-    public void shines() {
-        super.shines();
-        System.out.print(vehicle.getClassName() + " " + vehicle.getLicensePlate() + " Polished. ");
+    public String shines() {
+        return super.shines() + vehicle.getClassName() + " " + vehicle.getLicensePlate() + " Polished. ";
     }
 }

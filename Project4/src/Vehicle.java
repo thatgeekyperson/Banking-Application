@@ -38,13 +38,13 @@ public class Vehicle {
         return this.unlockStrategy.unlockStrategy();
     }
 
-    public void shines() {
+    public String shines() {
         Random random = new Random();
         int randomInt = random.nextInt(100);
         if (randomInt > 30) {
-            System.out.print(this.getClassName() + " " + this.getLicensePlate() + " shines. ");
+            return this.getClassName() + " " + this.getLicensePlate() + " shines. ";
         } else {
-            System.out.print(this.getClassName() + " " + this.getLicensePlate() + " sparkles. ");
+            return this.getClassName() + " " + this.getLicensePlate() + " sparkles. ";
         }
     }
 

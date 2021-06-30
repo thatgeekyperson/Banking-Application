@@ -8,8 +8,8 @@ public abstract class WashingDecorator extends Vehicle {
     }
 
     @Override
-    public void shines() {
-        vehicle.shines();
+    public String shines() {
+        return vehicle.shines();
     }
 
     @Override
