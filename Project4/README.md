@@ -1,4 +1,4 @@
-# OOAD Project3 - Garage
+# OOAD Project4 - A Day at Garage
 
 ## Tavishi Priyam and Manan Khasgiwale
 
