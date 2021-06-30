@@ -2,8 +2,8 @@ import java.util.List;
 
 public class TestDriveCommand implements Command{
 
-    Mechanic mechanic;
-    List<Vehicle> vehicleList;
+    private Mechanic mechanic;
+    private List<Vehicle> vehicleList;
 
     public TestDriveCommand(Mechanic mechanic, List<Vehicle> vehicleList) {
         this.mechanic = mechanic;
@@ -26,7 +26,6 @@ public class TestDriveCommand implements Command{
 
     @Override
     public void undo() {
-        //
         return;
     }
 }

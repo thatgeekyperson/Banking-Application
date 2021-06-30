@@ -2,8 +2,8 @@ import java.util.List;
 
 public class LockCommand implements Command{
 
-    Mechanic mechanic;
-    List<Vehicle> vehicleList;
+    private Mechanic mechanic;
+    private List<Vehicle> vehicleList;
 
     public LockCommand(Mechanic mechanic, List<Vehicle> vehicleList) {
         this.mechanic = mechanic;
@@ -21,7 +21,6 @@ public class LockCommand implements Command{
 
     @Override
     public void undo() {
-        //
         return;
     }
 }

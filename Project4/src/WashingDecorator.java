@@ -1,35 +1,42 @@
 public abstract class WashingDecorator extends Vehicle {
 
-    Vehicle vehicle;
+    private Vehicle vehicle;
 
     public WashingDecorator(Vehicle vehicle) {
         super();
-        this.vehicle = vehicle;
+        this.setVehicle(vehicle);
     }
 
     @Override
     public String shines() {
-        return vehicle.shines();
+        return getVehicle().shines();
     }
 
     @Override
     public UnlockStrategy getUnlockStrategy() {
-        return vehicle.getUnlockStrategy();
+        return getVehicle().getUnlockStrategy();
     }
 
     @Override
     public String unlocked() {
-        return vehicle.getUnlockStrategy().unlockStrategy();
+        return getVehicle().getUnlockStrategy().unlockStrategy();
     }
 
     @Override
     public String getLicensePlate() {
-        return vehicle.getLicensePlate();
+        return getVehicle().getLicensePlate();
     }
 
     @Override
     public String getClassName() {
-        return vehicle.getClassName();
+        return getVehicle().getClassName();
     }
 
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
 }

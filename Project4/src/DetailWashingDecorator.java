@@ -4,6 +4,6 @@ public class DetailWashingDecorator extends WashingDecorator{
     }
 
     public String shines() {
-        return super.shines() + vehicle.getClassName() + " " + vehicle.getLicensePlate() + " Detailed. ";
+        return super.shines() + getVehicle().getClassName() + " " + getVehicle().getLicensePlate() + " Detailed. ";
     }
 }

@@ -44,8 +44,7 @@ public class Garage {
 
         int currentTime = 9;
 
-        while(currentTime <= 20) {
-
+        while (currentTime <= 20) {
             System.out.println(String.format("Garage menu. Current time is " + currentTime++ + "00!", "%2d"));
             System.out.println("1. Unlock all vehicles");
             System.out.println("2. Wash all vehicles");
@@ -112,24 +111,6 @@ public class Garage {
             }
 
             System.out.println("Closing time. Good day!");
-
-
-//            for(int ind = 0; ind < vehiclesInGarage.size(); ind++) {
-//                Vehicle v = vehiclesInGarage.get(ind);
-//                //Polymorphism: mechanic is polymorphically being treated as GarageEmployee since Mechanic inherits GarageEmployee
-//                user.testDrive(v);
-//                String d = v.drives();
-//                System.out.println(v.getClass().getName() + " " + v.getLicensePlate() + " " + d + ".");
-//                if(v.getClass().getName().equals("Monster") && d.equals("crashes")) {
-//                    vehiclesInGarage.remove(ind);
-//                    ind = ind - 1;
-//                    System.out.println("Mechanic " + user.getName() + " leaves at Garage. ");
-//                    garageClock.removePropertyChangeListener(user);
-//                    return;
-//                }
-//            }
-
         }
-        // done processing all the days
     }
 }

@@ -28,9 +28,8 @@ The class files for this project are:
 
 
 * **GarageEmployee.java:** This class is an abstract class being inherited by the class Mechanic. It defines all the methods performed by the mechanic.
-* **Mechanic.java:** This class inherits the abstract class GarageEmployee. It observes the GarageClock and is an observable to GarageAnnouncer.
-* **GarageAnnouncer.java:** This class inherits the abstract class GarageEmployee. It observes the GarageClock and Mechanic.
-* **GarageClock.java:** This class that maintains the garage time on a particular day. It is an observable to GarageAnnouncer and Mechanic.
+* **Mechanic.java:** This class inherits the abstract class GarageEmployee.
+* **User.java:** This class inherits the class Mechanic. This calls mechanics function with the help of Command pattern.
 
 
 * **Motorcycle.java:** This class inherits Vehicle.
@@ -58,26 +57,40 @@ The class files for this project are:
 * **LifeBoat.java:** This class inherits Boat and initiates licensePlate for each LifeBoat.
 * **FishingBoat.java:** This class inherits Boat and initiates licensePlate for each FishingBoat.
 
+* **Command.java:** This class provides an interface to call commands on Mechanic's action to the User.
+* **WashCommand.java:** This class calls commands on wash action of Mechanic on Vehicle list.
+* **UnlockCommand.java:** This class calls commands on unlock action of Mechanic on Vehicle list.
+* **TuneUpCommand.java:** This class calls commands on tune up action of Mechanic on Vehicle list.
+* **TestDriveCommand.java:** This class calls commands on test drive action of Mechanic on Vehicle list.
+* **LockCommand.java:** This class calls commands on lock action of Mechanic on Vehicle list.
+
+* **WashingDecorator.java:** This is an abstract class to decorate the Wash functionality of Mechanic over Vehicles.
+* **WaxWashingDecorator.java:** This is a class to add the wax Wash functionality.
+* **SoapWashingDecorator.java:** This is a class to add the soap Wash functionality.
+* **ScrubWashingDecorator.java:** This is a class to add the scrub Wash functionality.
+* **RinseWashingDecorator.java:** This is a class to add the rinse Wash functionality.
+* **PolishWashingDecorator.java:** This is a class to add the polish Wash functionality.
+* **DryWashingDecorator.java:** This is a class to add the dry Wash functionality.
+* **DetailWashingDecorator.java:** This is a class to add the detail Wash functionality.
+
+
 ### Project Comments
 This project is a virtual garage. Using this project, one can complete the following tasks:
 * Create vehicle factory and add vehicles to garage.
 * Add/update vehicle unlock strategy for vehicles.
-* Remove vehicles from the garage.
-* Add mechanic to the garage.
-* Remove mechanic from the garage.
 * Mechanic performs the tasks on the vehicles including: unlock, wash, tuneUp, testDrive, lockUp. 
-* Mechanic performs these tasks at a particular time.
 * Vehicle responds to the tasks.
-* Perform these tasks for n number of days.
-* GarageAnnouncer announcer announces the events.
-* GarageClock maintains the time.
+* User starts the day at the garage.
+* User acts as a Mechanic and perform any of the tasks on all vehicles.
+* User selects task to be performed from garage menu. All tasks take an hour to complete.
+* All the tasks can be run only when all vehicles are unlocked.
+* User is free to end the day at any time.
+* Wash activity is modified for Monster and Convertible.
 
 ### Assumptions
-* There a limited number of mechanics working in the garage.
-* Only one mechanic can work in the garage at once.
-* One mechanic can work on only one vehicle at a time.
-* The same GarageAnnouncer arrives and leaves every day.
+* One user is working in the garage. User is a Singleton.
 * Have made providing unlock strategy mandatory by making it the constructor argument.
+* Decorators are being placed while generating new vehicles from the factories.
 
 ### Issues encountered
 * One issue that we encountered was figuring out how to remove mechanic from the garage once monster crashes and make 
@@ -91,8 +104,12 @@ This project is a virtual garage. Using this project, one can complete the follo
   Also included sleep in mechanic to wait for the exact time to run the event. Sleep was also necessary to give the 
   control back to other threads running, else the system was getting blocked while waiting for the time to increment.
   This was due to the PropertyChange method not being called.
+* Setting up Command pattern and understanding the interaction between different object was challenging.
+* Setting up new patterns without removing the existing patterns was tricky.
+* Setting up Junit for the first time had issues. We were importing both testng and junit framework.
 
 ### Execution instructions
 * Select the Garage.java file and click on the run button.
-* Enter the number of days to run the program. 
+* Enter the user name to proceed with the Garage Menu.
+* Run MyUnitTest to execute all Junit test cases.
 

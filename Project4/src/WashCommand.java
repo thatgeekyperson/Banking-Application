@@ -3,8 +3,8 @@ import java.util.Random;
 
 public class WashCommand implements Command{
 
-    Mechanic mechanic;
-    List<Vehicle> vehicleList;
+    private Mechanic mechanic;
+    private List<Vehicle> vehicleList;
 
     public WashCommand(Mechanic mechanic, List<Vehicle> vehicleList) {
         this.mechanic = mechanic;
@@ -29,7 +29,6 @@ public class WashCommand implements Command{
 
     @Override
     public void undo() {
-        //
         return;
     }
 }
