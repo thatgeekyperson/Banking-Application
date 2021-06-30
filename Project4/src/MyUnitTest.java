@@ -10,6 +10,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MyUnitTest {
+    // Test case implementation with Junit
+    // https://www.baeldung.com/junit
 
     VehicleFactory motorcycleFactory = new MotorcycleFactory();
     VehicleFactory carFactory = new CarFactory();

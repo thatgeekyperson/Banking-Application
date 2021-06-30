@@ -1,4 +1,5 @@
 public class DryWashingDecorator extends WashingDecorator{
+    // Decorator Pattern implementation
     DryWashingDecorator(Vehicle vehicle) {
         super(vehicle);
     }

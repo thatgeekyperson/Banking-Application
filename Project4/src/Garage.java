@@ -109,8 +109,7 @@ public class Garage {
                     System.out.println("Ending for the day...");
                     return;
             }
-
-            System.out.println("Closing time. Good day!");
         }
+        System.out.println("Closing time. Good day!");
     }
 }

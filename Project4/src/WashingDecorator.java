@@ -1,5 +1,6 @@
 public abstract class WashingDecorator extends Vehicle {
-
+    // Decorator Pattern implementation
+    // https://www.tutorialspoint.com/design_pattern/decorator_pattern.htm
     private Vehicle vehicle;
 
     public WashingDecorator(Vehicle vehicle) {

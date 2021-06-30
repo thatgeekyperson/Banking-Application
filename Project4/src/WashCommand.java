@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.Random;
 
 public class WashCommand implements Command{
-
+    // Command Pattern implementation
     private Mechanic mechanic;
     private List<Vehicle> vehicleList;
 

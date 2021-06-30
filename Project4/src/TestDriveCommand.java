@@ -1,7 +1,7 @@
 import java.util.List;
 
 public class TestDriveCommand implements Command{
-
+    // Command Pattern implementation
     private Mechanic mechanic;
     private List<Vehicle> vehicleList;
 

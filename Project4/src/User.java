@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class User extends Mechanic{
-
+    // Singleton pattern implementation
     private static User user;
     private final String name;
     private Command command;
