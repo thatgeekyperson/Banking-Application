@@ -40,7 +40,7 @@ public class Garage {
         LockCommand lockCommand = new LockCommand(user, vehiclesInGarage);
 
         int selection;
-        boolean isVehicleUnlocked = true;
+        boolean isVehicleUnlocked = false;
 
         int currentTime = 9;
 
