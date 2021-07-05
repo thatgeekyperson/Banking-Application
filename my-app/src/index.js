@@ -12,7 +12,7 @@ class App extends React.Component {
       <BrowserRouter>
         <div>
           <h1>Banking System </h1>
-          <div><a href="/login">Login</a></div>
+          <div><a href="/git sta">Login</a></div>
             <Switch>
             <Route exact path="/">
                 <Home/>
