@@ -6,15 +6,39 @@ import Login from "./login";
 import Register from "./register";
 import Home from "./home"
 import LoanForm from './loanform';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import background from "./img_financedoodle.jpg";
+
 
 class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
         <div>
-          <h1>Banking System </h1>
-          <div><a href="/login">Login</a> <br/>
-          <a href="/loanform">Loan Application Form</a></div>
+
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Banking System</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/loanform">Loan Application Form</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
+          <div> <br/>
+          </div>
             <Switch>
             <Route exact path="/">
                 <Home/>
