@@ -1,21 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch , Route} from 'react-router-dom';
-import './index.css';
-import Login from "./login";
-import Register from "./register";
-import Home from "./home"
-import LoanForm from './loanform';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import background from "./img_financedoodle.jpg";
 
-
-class App extends React.Component {
-  render() {
-    return (
-      <BrowserRouter>
+class NavBar extends React.Component {
+    render() {
+      return (
         <div>
-
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Banking System</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,36 +24,9 @@ class App extends React.Component {
               </ul>
             </div>
           </nav>
-
-          <div> <br/>
-          </div>
-            <Switch>
-            <Route exact path="/">
-                <Home/>
-              </Route>
-              <Route exact path="/login">
-                <Login/>
-              </Route>
-              <Route exact path="/register">
-                <Register/>
-              </Route>
-              <Route exact path="/loanform">
-                <LoanForm/>
-
-
-              </Route>
-            </Switch>
         </div>
-      </BrowserRouter>
-    );
+      );
+    }
   }
-}
 
-// ========================================
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
-
-
+  export default NavBar;

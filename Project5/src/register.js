@@ -9,7 +9,7 @@ class Register extends React.Component {
             Username: <input></input><br/>
             Password: <input type="password"></input><br/>
           </form>
-          <a href="#">Register new user?</a>
+          <a href="/login">Already a user?</a>
         </div>
       );
     }
