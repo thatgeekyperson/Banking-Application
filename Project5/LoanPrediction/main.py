@@ -1,19 +1,32 @@
 from Client import Client
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+from ClientFactory import ClientFactory
+from Manager import Manager
+import database
+import asyncio
+from time import sleep
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-    client1 = Client("Tav")
+async def serve() -> None:
+    await database.connect_db()
+
+    from database import db_loan_prediction
+
+    client1 = await ClientFactory.create_client("Tav")
+    manager = Manager.instance()
+
+    print(Manager.instance() == manager)
     print(client1.name, client1.bankID)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    sleep(1)
+
+    async def query():
+        from ClientModel import ClientModel
+        # name_list = await db_loan_prediction.status(db_loan_prediction.text('select * from student'))
+        name_list = await ClientModel.query.gino.all()
+        for entry in name_list:
+            print(entry)
+
+    await query()
+
+if __name__ == '__main__':
+    asyncio.run(serve())

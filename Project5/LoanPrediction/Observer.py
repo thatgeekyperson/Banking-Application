@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from Client import Client
 
 
 class Observer(ABC):
@@ -8,8 +7,10 @@ class Observer(ABC):
     """
 
     @abstractmethod
-    def update(self, client: Client) -> None:
+    def update(self) -> None:
         """
         Receive update from subject.
         """
+        from Client import Client
+        client = Client()
         pass
