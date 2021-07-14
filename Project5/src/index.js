@@ -8,7 +8,7 @@ import Home from "./home"
 import LoanForm from './loanform';
 import NavBar from "./navbar"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import background from "./img_financedoodle.jpg";
+// import background from "./img_financedoodle.jpg";
 
 
 class App extends React.Component {
