@@ -5,7 +5,7 @@ class Register extends React.Component {
       return (
         <div>
           <h1>Register </h1>
-          <form action = "http://localhost:5000/register" method = "post">
+          <form action = "http://localhost:5000/register" method = "POST">
             Name: <input type="text" name="name"></input><br/>
             Username: <input type="text" name="username"></input><br/>
             Password: <input type="password" name="password"></input><br/>

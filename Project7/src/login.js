@@ -4,14 +4,14 @@ function Login() {
   const [message, setMessage] = useState(0);
 
   useEffect(() => {
-    fetch('http://localhost:5000/login').then(res => res.json()).then(data => {
+    fetch('http://localhost:5000/login').then(res => res).then(data => {
       setMessage(data.message);
     });
   }, []);
 
   return (
     <div className="pad">
-        <div>{message}</div>
+        <div>{message===0 ? null : message}</div>
         <form action = "http://localhost:5000/login" method = "post">
             <div className="form-group">
                 <label>User ID</label> <br/>
@@ -24,7 +24,7 @@ function Login() {
             </div>
             <div className="form-check">
                 <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                <label className="form-check-label" for="exampleCheck1">Remember me</label>
+                <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
         </form>

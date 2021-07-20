@@ -7,6 +7,7 @@ import Register from "./register";
 import Home from "./home"
 import LoanForm from './loanform';
 import NavBar from "./navbar"
+import ClientStatus from './clientstatus';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import background from "./img_financedoodle.jpg";
 
@@ -31,6 +32,9 @@ class App extends React.Component {
             </Route>
             <Route exact path="/loanform">
               <LoanForm/>
+            </Route>
+            <Route exact path="/clientstatus">
+              <ClientStatus/>
             </Route>
           </Switch>
         </div>

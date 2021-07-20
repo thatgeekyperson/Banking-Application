@@ -11,7 +11,6 @@ function Login() {
 
   return (
     <div className="pad">
-        <div>{message}</div>
         <form action = "http://localhost:5000/login" method = "post">
             <div className="form-group">
                 <label>User ID</label> <br/>
