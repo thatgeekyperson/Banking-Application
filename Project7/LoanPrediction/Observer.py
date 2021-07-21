@@ -7,10 +7,16 @@ class Observer(ABC):
     """
 
     @abstractmethod
-    def update(self) -> None:
+    def notify(self) -> None:
         """
         Receive update from subject.
         """
-        from Client import Client
-        client = Client()
+        pass
+
+    @abstractmethod
+    def add_client(self, client) -> None:
+        pass
+
+    @abstractmethod
+    def remove_client(self, client) -> None:
         pass

@@ -1,31 +1,29 @@
 import random
 from abc import ABC
-from LoanPredictionForm import LoanPredictionForm
+from LoanForm import LoanForm
 from Observer import Observer
 from Subject import Subject
 
 
 class Client(Subject, ABC):
 
-    def __init__(self, name):
+    def __init__(self, name, username, password):
         self.name = name
+        self.username = username
+        self.password = password
         self.bank_id = int(random.random() * 100000000)
         self.loan_id = 0
-        self.loanPredictionForm = LoanPredictionForm("male", 10000, 3)
+        self.loanPredictionForm = None  # LoanPredictionForm("male", 10000, 3)
 
-    def set_username(self, username):
-        self.username = username
+    # def set_username(self, username):
+    #     pass
+    #
+    # def set_password(self, password):
+    #     pass
 
-    def set_password(self, password):
-        self.password = password
-
-    def attach(self, observer: Observer) -> None:
-        pass
-
-    def detach(self, observer: Observer) -> None:
-        pass
-
-    def notify(self) -> None:
+    def update(self) -> None:
+        print(self.name + " is sending payment to bank of amount " +
+              str(self.loanPredictionForm.loan_amount/self.loanPredictionForm.loan_term_months))
         pass
 
     def __str__(self):
