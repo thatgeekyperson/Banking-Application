@@ -40,13 +40,18 @@ async def register():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
-    if request.method == 'GET':
+    if request.method == 'POST':
         # message = "You are registered %s" % name
-        return {'message': 'Successfully registered!', 'logged_in': True}
-    return {'message': 'Successfully registered!'}
+        return redirect("http://localhost:3000/")
+        # return {'message': 'Successfully registered!', 'logged_in': True}
+    if request.method == 'GET':
+        logged_in = request.args['logged_in']
+        # if logged_in:
+        #     return {'message': 'Successfully registered!', 'logged_in': logged_in}
+        return redirect("http://localhost:3000/")
 
 
-@app.route('/loan_form', methods=['POST', 'GET'])
+@app.route('/loanform', methods=['POST', 'GET'])
 def loan_form():
     if request.method == 'POST':
         # name = request.form['name']
@@ -59,6 +64,7 @@ def loan_form():
 
 @app.route('/flask_logout')
 def logout():
+    # return {'message': 'Successfully logged out!', 'logged_in': False}
     return redirect("http://localhost:3000/login")
 
 # TODO: Need this in a thread to run periodically

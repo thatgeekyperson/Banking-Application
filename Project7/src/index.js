@@ -14,13 +14,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-  const [logged_in, setLoggedIn] = useState(false);
+  const [logged_in, setLoggedIn] = useState(true);
 
-  useEffect(() => {
-    fetch('http://localhost:5000/login').then(res => res).then(data => {
-      setLoggedIn(data.logged_in);
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://localhost:5000/login').then(res => res).then(data => {
+  //     setLoggedIn(data.logged_in);
+  //   });
+  // }, []);
 
   return (
     <BrowserRouter>

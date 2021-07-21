@@ -27,12 +27,13 @@ async def serve() -> None:
         await db_loan_prediction.status(db_loan_prediction.text('create TABLE loan_form '
                                                                 '(loan_id INT PRIMARY KEY, gender VARCHAR(1), '
                                                                 'loan_amount INT, loan_term_months INT);'))
+        # await db_loan_prediction.status(db_loan_prediction.text('drop table transactions;'))
+        await db_loan_prediction.status(db_loan_prediction.text('create TABLE transactions '
+                                                                '(transaction_id INT PRIMARY KEY, client_id INT, '
+                                                                'amount INT);'))
         # await db_loan_prediction.status(db_loan_prediction.text('insert into client values (10001, \'Manan\', 0, '
         #                                                         '\'manankh\', \'qwerty\');'))
-        # await db_loan_prediction.status(db_loan_prediction.text('insert into client values (10002, \'Tavishi\', 0, '
-        #                                                         '\'tavishi\', \'asdfgh\');'))
-        # await db_loan_prediction.status(db_loan_prediction.text('insert into client values (10003, \'Sundar\', 0, '
-        #                                                         '\'sundar\', \'zxcvbn\');'))
+
         from LoanFormFactory import LoanFormFactory
         client1 = await client_factory.create_client("Tava", "tpr", "poe67")
         await LoanFormFactory.create_loan_form("F", 9000, 30, client1)

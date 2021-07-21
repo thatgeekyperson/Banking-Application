@@ -7,7 +7,7 @@ class LoanForm extends React.Component {
         <div className="pad">
           <h1>Loan Applicant Details </h1>
           <br/>
-          <form action = "loan_form" method = "POST">
+          <form action = "http://localhost:5000/loanform" method = "POST">
             Name: <input></input><br/>
             Date Of Birth: <input type="date"></input><br/><br/>
             <div className="input-group mb-3">
