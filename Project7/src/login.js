@@ -18,20 +18,24 @@ const Login = ({loggedIn, setLoggedIn, setClientId}) => {
       body: JSON.stringify(auth)
     }).then(res => res.json()).then((data) => {
       console.log(data, typeof data.logged_in);
-      setMessage(data.message)
       sessionStorage.setItem("loggedIn", data.logged_in ? 'true' : 'false');
       setLoggedIn(data.logged_in ? 'true' : 'false');
       if (data.logged_in) {
         sessionStorage.setItem("clientId", data.client_id);
         setClientId(data.client_id)
       }
-      history.push('/login')
+      if(data.logged_in) {
+        history.push('/')
+      } else {
+        setMessage(data.message)
+        history.push('/login')
+      }
+        
     })
   }
 
   return (
     <div className="pad">
-      {loggedIn==='true' && <div>{message}</div>}
       {
         loggedIn==='false' &&
         <div>

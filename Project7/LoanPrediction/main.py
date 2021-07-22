@@ -78,6 +78,25 @@ async def serve() -> None:
     await print_name_list(TransactionModel)
 
 
+async def manager_command():
+    import requests
+    import time
+
+    await database.connect_db()
+    from database import db_loan_prediction
+    await db_loan_prediction.status(db_loan_prediction.text('truncate table client;'))
+    await db_loan_prediction.status(db_loan_prediction.text('truncate table loan_form;'))
+    await db_loan_prediction.status(db_loan_prediction.text('truncate table transactions;'))
+    await database.disconnect_db()
+    # defining the api-endpoint
+    api_endpoint = "http://localhost:5000/manager"
+
+    for i in range(100):
+        print("Index: ", i)
+        requests.get(url=api_endpoint)
+        time.sleep(15)
+
+
 if __name__ == '__main__':
-    asyncio.run(serve())
+    asyncio.run(manager_command())
 

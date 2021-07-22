@@ -23,6 +23,11 @@ class Client(Subject, ABC):
     #     pass
 
     async def update(self) -> None:
+
+        if self.loanPredictionForm is None:
+            print("No loan for client: ", self.bank_id)
+            return
+
         emi_amount = self.loanPredictionForm.loan_amount / self.loanPredictionForm.loan_term_months
         print(self.name + " is sending payment to bank of amount " +
               str(emi_amount))

@@ -24,4 +24,4 @@ async def connect_db():
 
 async def disconnect_db():
     global db_loan_prediction
-    db_loan_prediction.pop_bind()
+    await db_loan_prediction.pop_bind().close()

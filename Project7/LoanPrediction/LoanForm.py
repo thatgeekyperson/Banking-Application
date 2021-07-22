@@ -1,6 +1,6 @@
 class LoanForm:
 
-    __loan_id_counter = 20020
+    __loan_id_counter = 100001
 
     def __init__(self, gender, married, self_employed, education, credit_history, property_area,
                  loan_amount, loan_term_months):

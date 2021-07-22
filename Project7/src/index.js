@@ -19,8 +19,8 @@ const App = () => {
   useEffect(() => {
     setLoggedIn(sessionStorage.getItem("loggedIn"))
     setClientId(sessionStorage.getItem("clientId"))
-    console.log("in effect: " + sessionStorage.getItem("loggedIn") + " " + sessionStorage.getItem("clientId") + " " +  loggedIn + " " +  clientId)
-  }, []);
+    console.log("in effect: " + sessionStorage.getItem("loggedIn") + " " + sessionStorage.getItem("clientId") ) //+ " " +  loggedIn + " " +  clientId
+  }, [loggedIn]);
 
   return (
     <BrowserRouter>
@@ -39,7 +39,7 @@ const App = () => {
             <Register/>
           </Route>
           <Route exact path="/loanform">
-            <LoanForm/>
+            <LoanForm  clientId={clientId}/>
           </Route>
           <Route exact path="/clientstatus">
             <ClientStatus clientId={clientId}/>
