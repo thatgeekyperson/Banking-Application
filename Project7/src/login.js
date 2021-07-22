@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import "./login.css";
 
-function Login() {
-  const [message, setMessage] = useState(0);
+const Login = () => {
+  // const [message, setMessage] = useState(0);
 
-  useEffect(() => {
-    fetch('http://localhost:5000/login').then(res => res).then(data => {
-      setMessage(data.message);
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://localhost:5000/login').then(res => res).then(data => {
+  //     setMessage(data.message);
+  //   });
+  // }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.myCallBack(True)
+  }
 
   return (
     <div className="pad">
-        <div>{message===0 ? null : message}</div>
-        <form action = "http://localhost:5000/login" method = "post">
+        <form action = "http://localhost:5000/login" method = "post" onSubmit={handleSubmit}>
             <div className="form-group">
                 <label>User ID</label> <br/>
                 <input placeholder="Enter userID"/><br/>

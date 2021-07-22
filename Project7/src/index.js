@@ -14,13 +14,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-  const [logged_in, setLoggedIn] = useState(true);
+  const [logged_in, setLoggedIn] = useState(false);
 
-  // useEffect(() => {
-  //   fetch('http://localhost:5000/login').then(res => res.json()).then(data => {
-  //     setLoggedIn(data.logged_in);
-  //   });
-  // }, []);
+  useEffect(() => {
+    fetch('http://localhost:5000/login').then(res => res.json()).then(data => {
+      setLoggedIn(data.logged_in);
+    });
+  }, []);
+
+  myCallback = (logged_in) => {
+    setLoggedIn(logged_in);
+  }
 
   return (
     <BrowserRouter>
@@ -33,7 +37,7 @@ function App() {
             <Home/>
           </Route>
           <Route exact path="/login">
-            <Login/>
+            <Login myCallback={myCallback}/>
           </Route>
           <Route exact path="/register">
             <Register/>

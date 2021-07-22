@@ -61,6 +61,8 @@ async def serve() -> None:
 
     manager.set_command(send_payment_reminder)
     await manager.command.execute()
+    await manager.command.execute()
+    await manager.command.execute()
 
     from models.TransactionModel import TransactionModel
     await print_name_list(TransactionModel)

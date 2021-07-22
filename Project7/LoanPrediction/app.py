@@ -18,8 +18,10 @@ send_payment_reminder = SendPaymentReminder(bank)
 manager = Manager.instance()
 
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def index():
+    if request.method == 'POST':
+        return {'message': 'Successfully registered!', 'logged_in': True}
     return {'heading': 'Welcome to the App'}
 
 
@@ -39,14 +41,9 @@ async def register():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
-        # message = "You are registered %s" % name
-        return redirect("http://localhost:3000/")
-        # return {'message': 'Successfully registered!', 'logged_in': True}
+        return {'message': 'Successfully registered!', 'logged_in': True}
     if request.method == 'GET':
-        logged_in = request.args['logged_in']
-        # if logged_in:
-        #     return {'message': 'Successfully registered!', 'logged_in': logged_in}
-        return redirect("http://localhost:3000/")
+        return redirect("http://localhost:3000/login")
 
 
 @app.route('/loanform', methods=['POST', 'GET'])
@@ -73,16 +70,34 @@ async def clientstatus():
     from models.ClientModel import ClientModel
     from models.LoanFormModel import LoanFormModel
     from models.TransactionModel import TransactionModel
-    client = await ClientModel.query.where(ClientModel.bank_id == 79706556).gino.first()
+    # client = await ClientModel.query.where(ClientModel.bank_id == 3659022).gino.first()
+    client = await ClientModel.query.gino.first()  # TODO: need to change
     loan_details = await LoanFormModel.query.where(LoanFormModel.loan_id == client.loan_id).gino.first()
     transactions = await TransactionModel.query.where(TransactionModel.client_id == client.bank_id).gino.all()
     await database.disconnect_db()
 
-    client = {'name': client.name,
-              'bank_id': client.bank_id,
-              'loan_id': client.loan_id}
+    client = {
+        'name': client.name,
+        'bank_id': client.bank_id,
+        'loan_id': client.loan_id
+    }
+    loan_details = {
+        'loan_amount': loan_details.loan_amount,
+        'loan_term_months': loan_details.loan_term_months,
+        'loan_amount_remaining': loan_details.loan_amount_remaining
+    }
 
-    client_data = {'client': client}
+    transaction_json = dict()
+    index = 0
+    for trans in transactions:
+        transaction_json[index] = {
+            'transaction_id': trans.transaction_id,
+            'client_id': trans.client_id,
+            'amount_paid': trans.amount_paid
+        }
+        index += 1
+
+    client_data = {'client': client, 'loan_details': loan_details, 'transactions': transaction_json}
 
     print(client_data)
 
