@@ -47,9 +47,9 @@ async def serve() -> None:
 
         from LoanFormFactory import LoanFormFactory
         client1 = await client_factory.create_client("Tava", "tpr", "poe67")
-        loan1 = await LoanFormFactory.create_loan_form(0, 1, 1, 1, 1, 0, 9000, 30, client1)
+        loan1 = await LoanFormFactory.create_loan_form(1, 1, 1, 1, 1, 0, 9000, 30, client1)
         client2 = await client_factory.create_client("Mana", "mana", "man67")
-        await LoanFormFactory.create_loan_form(0, 1, 1, 1, 1, 0, 12000, 20, client2)
+        await LoanFormFactory.create_loan_form(0, 1, 1, 1, 1, 2, 12000, 20, client2)
         client3 = await client_factory.create_client("Bruce", "bru", "bru67")
         await LoanFormFactory.create_loan_form(0, 1, 1, 1, 1, 0, 8000, 32, client3)
 

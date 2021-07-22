@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch , Route} from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.css';
 import Login from "./login";
 import Register from "./register";
@@ -14,20 +14,26 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
 
-  const [logged_in, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState('false');
+  const [clientId, setClientId] = useState(null);
+  useEffect(() => {
+    setLoggedIn(sessionStorage.getItem("loggedIn"))
+    setClientId(sessionStorage.getItem("clientId"))
+    console.log("in effect: " + sessionStorage.getItem("loggedIn") + " " + sessionStorage.getItem("clientId") + " " +  loggedIn + " " +  clientId)
+  }, []);
 
   return (
     <BrowserRouter>
       <div>
 
-        <NavBar logged_in={logged_in}/>
+        <NavBar loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
 
         <Switch>
           <Route exact path="/">
-            <Home/>
+            <Home loggedIn={loggedIn}/>
           </Route>
           <Route exact path="/login">
-            <Login setLoggedIn={setLoggedIn}/>
+            <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} setClientId={setClientId}/>
           </Route>
           <Route exact path="/register">
             <Register/>
@@ -36,7 +42,7 @@ const App = () => {
             <LoanForm/>
           </Route>
           <Route exact path="/clientstatus">
-            <ClientStatus/>
+            <ClientStatus clientId={clientId}/>
           </Route>
         </Switch>
       </div>

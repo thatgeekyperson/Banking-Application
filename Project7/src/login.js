@@ -1,32 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import "./login.css";
 
-const Login = ({setLoggedIn}) => {
+const Login = ({loggedIn, setLoggedIn, setClientId}) => {
+  const [message, setMessage] = useState(null)
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const history = useHistory()
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoggedIn(true);
+
+    const auth = {username, password}
+    fetch("http://localhost:5000/login", {
+      method: "POST",
+      headers: { 'Content-Type': "application/json"},
+      body: JSON.stringify(auth)
+    }).then(res => res.json()).then((data) => {
+      console.log(data, typeof data.logged_in);
+      setMessage(data.message)
+      sessionStorage.setItem("loggedIn", data.logged_in ? 'true' : 'false');
+      setLoggedIn(data.logged_in ? 'true' : 'false');
+      if (data.logged_in) {
+        sessionStorage.setItem("clientId", data.client_id);
+        setClientId(data.client_id)
+      }
+      history.push('/login')
+    })
   }
 
   return (
     <div className="pad">
-        <form action = "http://localhost:5000/" method = "post" onSubmit={handleSubmit}>
-            <div className="form-group">
-                <label>User ID</label> <br/>
-                <input placeholder="Enter userID"/><br/>
-            </div>
-            <div className="form-group">
-                <label>Password</label> <br/>
-                <input type="password" placeholder="Password"/><br/>
-                <small id="emailHelp" className="form-text text-muted">We'll never share your password with anyone else.</small>
-            </div>
-            <div className="form-check">
-                <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
-            </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
-        <a href="/register">Register new user?</a>
+      {loggedIn==='true' && <div>{message}</div>}
+      {
+        loggedIn==='false' &&
+        <div>
+          <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                  <label>User ID</label> <br/>
+                  <input placeholder="Enter userID" value={username} onChange={(e) => setUsername(e.target.value)}/><br/>
+              </div>
+              <div className="form-group">
+                  <label>Password</label> <br/>
+                  <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/><br/>
+                  <small id="emailHelp" className="form-text text-muted">We'll never share your password with anyone else.</small>
+              </div>
+              <div className="form-check">
+                  <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
+                  <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
+              </div>
+              <button type="submit" className="btn btn-primary">Submit</button>
+          </form>
+          <a href="/register">Register new user?</a><br/>
+          {message}
+        </div>
+      }
     </div>
   );
 }

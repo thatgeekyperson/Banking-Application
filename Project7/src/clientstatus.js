@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-const ClientStatus = () => {
+const ClientStatus = (clientId) => {
   const [message, setMessage] = useState("Success")
-  const [client_id, setClientId] = useState(0);
+  const [local_client_id, setLocalClientId] = useState(0);
   const [loan_id, setLoanId] = useState(0);
   const [client_name, setClientName] = useState(0);
   const [loan_amount, setLoanAmount] = useState(0);
@@ -11,23 +11,27 @@ const ClientStatus = () => {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/clientstatus').then(res => res.json()).then(data => {
-      console.log(data.client_data)
+    fetch('http://localhost:5000/clientstatus', {
+      method: "POST",
+      headers: { 'Content-Type': "application/json"},
+      body: JSON.stringify(clientId)
+    }).then(res => res.json()).then(data => {
+      console.log(data)
       setMessage(data.message)
       var client = data.client_data.client
       var loan_details = data.client_data.loan_details
-      setClientId(client.bank_id)
+      setLocalClientId(client.bank_id)
       setClientName(client.name)
       setLoanId(client.loan_id)
       setLoanTerm(loan_details.loan_term_months)
       setLoanAmount(loan_details.loan_amount)
       setLoanAmountRemaining(loan_details.loan_amount_remaining)
 
-      if(message!=="Success") {
+      var transactions_pl = data.client_data.transactions 
+      if(data.message!=="Success" || transactions_pl===null) {
         return;
       }
 
-      var transactions_pl = data.client_data.transactions 
       var transactions_li = ""
       var key, val
       for([key, val] of Object.entries(transactions_pl)) {
@@ -36,12 +40,12 @@ const ClientStatus = () => {
       setTransactions(transactions_li)
 
     });
-  }, [message]);
+  }, [clientId]);
 
   return (
     <div className="pad">
       <h1>Client Status</h1>
-      <div>Client ID: {client_id} <br/>Client Name: {client_name} <br/>Loan ID: {loan_id}<br/></div>
+      <div>Client ID: {local_client_id} <br/>Client Name: {client_name} <br/>Loan ID: {loan_id}<br/></div>
       <div>Loan Amount: {loan_amount} <br/>Loan Term: {loan_term} <br/>Loan Amount Remaining: {loan_amount_remaining}<br/></div>
       <br/>
       { message === "Success" &&
