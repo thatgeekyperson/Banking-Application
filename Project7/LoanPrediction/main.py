@@ -67,4 +67,10 @@ async def serve() -> None:
 
 
 if __name__ == '__main__':
-    asyncio.run(serve())
+    # asyncio.run(serve())
+    from Predictor import Predictor
+    a=Predictor.predict([[1,1,1,1,1.0,2]])
+    if(a==0):
+        print("Loan rejected")
+    else:
+        print("Loan approved")
