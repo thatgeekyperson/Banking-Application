@@ -49,13 +49,25 @@ def login():
 @app.route('/loanform', methods=['POST', 'GET'])
 def loan_form():
     if request.method == 'POST':
-        # name = request.form['name']
-        # username = request.form['username']
-        # password = request.form['password']
+        g1 = request.form['gender']
+        m1 = request.form['married']
+        se1 = request.form['self_employed']
+        ch1 = request.form['credit_history']
+        ed1 = request.form['education']
+        pa1 = request.form['prop_area']
         # await database.connect_db()
         # await client_factory.create_client(name, username, password)
-        return redirect("http://localhost:3000/clientstatus")
-    return {'message': 'Successfully registered!'}
+
+        from Predictor import Predictor
+        a = Predictor.predict([[g1,m1,se1,ed1,ch1,pa1]])
+        if (a == 0):
+            print("Loan rejected")
+        else:
+            print("Loan approved")
+    return redirect("http://localhost:3000/clientstatus")
+    # return {'message': 'Successfully registered!'}
+
+
 
 
 @app.route('/flask_logout')
