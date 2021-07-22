@@ -10,7 +10,8 @@ class LoanFormFactory:
 
         from models.LoanFormModel import LoanFormModel
         await LoanFormModel.create(loan_id=loan_form_1.loan_id, gender=loan_form_1.gender,
-                                   loan_amount=loan_form_1.loan_amount, loan_term_months=loan_form_1.loan_term_months)
+                                   loan_amount=loan_form_1.loan_amount, loan_term_months=loan_form_1.loan_term_months,
+                                   loan_amount_remaining=loan_form_1.loan_amount)
 
         client.loan_id = loan_form_1.loan_id
         client.loanPredictionForm = loan_form_1

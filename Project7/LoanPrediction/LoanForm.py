@@ -10,6 +10,7 @@ class LoanForm:
         # self.dependents = dependents
         self.loan_amount = loan_amount
         self.loan_term_months = loan_term_months
+        self.loan_amount_remaining = loan_amount
         # education, self-employed, applicantIncome, coApplicantIncome,
         # creditHistory, propertyArea, loanStatus
 

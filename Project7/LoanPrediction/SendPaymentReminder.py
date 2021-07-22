@@ -8,8 +8,8 @@ class SendPaymentReminder(Command, ABC):
     def __init__(self, bank):
         self.bank = bank
 
-    def execute(self):
-        self.bank.notify()
+    async def execute(self):
+        await self.bank.notify()
         print("Executing Payment Reminders")
 
     def undo(self):

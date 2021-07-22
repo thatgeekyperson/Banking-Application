@@ -1,10 +1,8 @@
-import asyncio
-from time import sleep
 from flask import Flask, request, redirect, url_for
 from flask_cors import CORS
-import database
+import pickle
 
-# asyncio.run()
+import database
 from Bank import Bank
 from ClientFactory import ClientFactory
 from Manager import Manager
@@ -62,10 +60,35 @@ def loan_form():
         return redirect("http://localhost:3000/clientstatus")
     return {'message': 'Successfully registered!'}
 
+
 @app.route('/flask_logout')
 def logout():
     # return {'message': 'Successfully logged out!', 'logged_in': False}
     return redirect("http://localhost:3000/login")
+
+
+@app.route('/clientstatus')
+async def clientstatus():
+    await database.connect_db()
+    from models.ClientModel import ClientModel
+    from models.LoanFormModel import LoanFormModel
+    from models.TransactionModel import TransactionModel
+    client = await ClientModel.query.where(ClientModel.bank_id == 79706556).gino.first()
+    loan_details = await LoanFormModel.query.where(LoanFormModel.loan_id == client.loan_id).gino.first()
+    transactions = await TransactionModel.query.where(TransactionModel.client_id == client.bank_id).gino.all()
+    await database.disconnect_db()
+
+    client = {'name': client.name,
+              'bank_id': client.bank_id,
+              'loan_id': client.loan_id}
+
+    client_data = {'client': client}
+
+    print(client_data)
+
+    print("**********************\n\n\n")
+    return {'message': 'Success', 'client_data': client_data}
+
 
 # TODO: Need this in a thread to run periodically
 # manager.set_command(send_payment_reminder)

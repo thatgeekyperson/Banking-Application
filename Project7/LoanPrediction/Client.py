@@ -6,6 +6,7 @@ from Subject import Subject
 
 
 class Client(Subject, ABC):
+    __transaction_id = 100000
 
     def __init__(self, name, username, password):
         self.name = name
@@ -21,10 +22,21 @@ class Client(Subject, ABC):
     # def set_password(self, password):
     #     pass
 
-    def update(self) -> None:
+    async def update(self) -> None:
+        emi_amount = self.loanPredictionForm.loan_amount / self.loanPredictionForm.loan_term_months
         print(self.name + " is sending payment to bank of amount " +
-              str(self.loanPredictionForm.loan_amount/self.loanPredictionForm.loan_term_months))
-        pass
+              str(emi_amount))
+        from models.LoanFormModel import LoanFormModel
+        from models.TransactionModel import TransactionModel
+
+        await TransactionModel.create(transaction_id=Client.__transaction_id,
+                                      client_id=self.bank_id, amount_paid=emi_amount)
+        Client.__transaction_id += 1
+        loan_details = await LoanFormModel.query.where(LoanFormModel.loan_id == self.loan_id).gino.first()
+        print("Here:" + str(loan_details))
+        if loan_details:
+            remaining_amount = loan_details.loan_amount_remaining-emi_amount
+            await loan_details.update(loan_amount_remaining=remaining_amount).apply()
 
     def __str__(self):
         return str(self.bank_id) + " " + str(self.name) + " " + str(self.loan_id) \

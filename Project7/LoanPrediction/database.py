@@ -5,7 +5,7 @@ from gino import Gino, create_engine
 
 # pylint: disable=invalid-name
 # Connect to the database
-db_loan_prediction = None
+db_loan_prediction: Gino = None
 
 
 async def connect_db():
@@ -21,3 +21,9 @@ async def connect_db():
     # await db_customer.set_bind(DBConstants.DB_customer, echo=True, ssl=ctx)
     print("db_loan_prediction:", end=" ")
     print(db_loan_prediction)
+
+
+async def disconnect_db():
+    global db_loan_prediction
+    db_loan_prediction.pop_bind()
+    db_loan_prediction = Gino()

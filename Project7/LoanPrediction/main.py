@@ -8,6 +8,14 @@ import asyncio
 from SendPaymentReminder import SendPaymentReminder
 
 
+async def print_name_list(model):
+    name_list = await model.query.gino.all()
+    print("\n\n************************************\n")
+    for entry in name_list:
+        print(entry)
+    print("\n************************************\n\n")
+
+
 async def serve() -> None:
     await database.connect_db()
 
@@ -26,11 +34,12 @@ async def serve() -> None:
         await db_loan_prediction.status(db_loan_prediction.text('drop table loan_form;'))
         await db_loan_prediction.status(db_loan_prediction.text('create TABLE loan_form '
                                                                 '(loan_id INT PRIMARY KEY, gender VARCHAR(1), '
-                                                                'loan_amount INT, loan_term_months INT);'))
-        # await db_loan_prediction.status(db_loan_prediction.text('drop table transactions;'))
+                                                                'loan_amount INT, loan_amount_remaining INT, '
+                                                                'loan_term_months INT);'))
+        await db_loan_prediction.status(db_loan_prediction.text('drop table transactions;'))
         await db_loan_prediction.status(db_loan_prediction.text('create TABLE transactions '
                                                                 '(transaction_id INT PRIMARY KEY, client_id INT, '
-                                                                'amount INT);'))
+                                                                'amount_paid INT);'))
         # await db_loan_prediction.status(db_loan_prediction.text('insert into client values (10001, \'Manan\', 0, '
         #                                                         '\'manankh\', \'qwerty\');'))
 
@@ -42,20 +51,19 @@ async def serve() -> None:
         client3 = await client_factory.create_client("Bruce", "bru", "bru67")
         await LoanFormFactory.create_loan_form("M", 8000, 32, client3)
 
-        from models.ClientModel import ClientModel
-        name_list = await ClientModel.query.gino.all()
-        for entry in name_list:
-            print(entry)
-
-        from models.LoanFormModel import LoanFormModel
-        name_list = await LoanFormModel.query.gino.all()
-        for entry in name_list:
-            print(entry)
-
     await query()
 
+    from models.ClientModel import ClientModel
+    await print_name_list(ClientModel)
+
+    from models.LoanFormModel import LoanFormModel
+    await print_name_list(LoanFormModel)
+
     manager.set_command(send_payment_reminder)
-    manager.command.execute()
+    await manager.command.execute()
+
+    from models.TransactionModel import TransactionModel
+    await print_name_list(TransactionModel)
 
 
 if __name__ == '__main__':
