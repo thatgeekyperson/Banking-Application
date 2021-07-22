@@ -21,7 +21,7 @@ manager = Manager.instance()
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
-        return {'message': 'Successfully registered!', 'logged_in': True}
+        return redirect("http://localhost:3000/clientstatus")
     return {'heading': 'Welcome to the App'}
 
 
@@ -41,33 +41,40 @@ async def register():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
+        # TODO: login logic
         return {'message': 'Successfully registered!', 'logged_in': True}
     if request.method == 'GET':
         return redirect("http://localhost:3000/login")
 
 
 @app.route('/loanform', methods=['POST', 'GET'])
-def loan_form():
+async def loan_form():
     if request.method == 'POST':
-        g1 = request.form['gender']
-        m1 = request.form['married']
-        se1 = request.form['self_employed']
-        ch1 = request.form['credit_history']
-        ed1 = request.form['education']
-        pa1 = request.form['prop_area']
-        # await database.connect_db()
-        # await client_factory.create_client(name, username, password)
+        g1 = int(request.form['gender'])
+        m1 = int(request.form['married'])
+        se1 = int(request.form['self_employed'])
+        ed1 = int(request.form['education'])
+        ch1 = int(request.form['credit_history'])
+        pa1 = int(request.form['prop_area'])
+        await database.connect_db()
+        from models.ClientModel import ClientModel
+        client = await ClientModel.query.gino.first()  # TODO: need to change
+        from LoanFormFactory import LoanFormFactory
 
         from Predictor import Predictor
-        a = Predictor.predict([[g1,m1,se1,ed1,ch1,pa1]])
-        if (a == 0):
+        prediction = Predictor.predict([[g1, m1, se1, ed1, ch1, pa1]])
+        if prediction == 0:
             print("Loan rejected")
         else:
             print("Loan approved")
-    return redirect("http://localhost:3000/clientstatus")
+
+        loan_term = 0 if (prediction == 0) else int(request.form['loan_term'])
+        print(loan_term)
+        await LoanFormFactory.create_loan_form(g1, m1, se1, ed1, ch1, pa1, int(request.form['loan_amount']),
+                                               loan_term, client)
+        await database.disconnect_db()
+    return redirect("http://localhost:5000/clientstatus?prediction="+str(prediction))
     # return {'message': 'Successfully registered!'}
-
-
 
 
 @app.route('/flask_logout')
@@ -84,8 +91,14 @@ async def clientstatus():
     from models.TransactionModel import TransactionModel
     # client = await ClientModel.query.where(ClientModel.bank_id == 3659022).gino.first()
     client = await ClientModel.query.gino.first()  # TODO: need to change
-    loan_details = await LoanFormModel.query.where(LoanFormModel.loan_id == client.loan_id).gino.first()
-    transactions = await TransactionModel.query.where(TransactionModel.client_id == client.bank_id).gino.all()
+    if client:
+        loan_details = await LoanFormModel.query.where(LoanFormModel.loan_id == client.loan_id).gino.first()
+    else:
+        print("No client")
+    if loan_details:
+        transactions = await TransactionModel.query.where(TransactionModel.client_id == client.bank_id).gino.all()
+    else:
+        print("No loan details")
     await database.disconnect_db()
 
     client = {
@@ -98,6 +111,10 @@ async def clientstatus():
         'loan_term_months': loan_details.loan_term_months,
         'loan_amount_remaining': loan_details.loan_amount_remaining
     }
+
+    if loan_details['loan_term_months'] == 0:
+        return {'message': 'Loan rejected', 'client_data':
+            {'client': client, 'loan_details': loan_details, 'transactions': None}}
 
     transaction_json = dict()
     index = 0

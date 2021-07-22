@@ -33,7 +33,9 @@ async def serve() -> None:
                                                                 'username VARCHAR, password VARCHAR);'))
         await db_loan_prediction.status(db_loan_prediction.text('drop table loan_form;'))
         await db_loan_prediction.status(db_loan_prediction.text('create TABLE loan_form '
-                                                                '(loan_id INT PRIMARY KEY, gender VARCHAR(1), '
+                                                                '(loan_id INT PRIMARY KEY, gender INT, married INT, '
+                                                                'self_employed INT, education INT, credit_history INT, '
+                                                                'property_area INT, '
                                                                 'loan_amount INT, loan_amount_remaining INT, '
                                                                 'loan_term_months INT);'))
         await db_loan_prediction.status(db_loan_prediction.text('drop table transactions;'))
@@ -45,11 +47,19 @@ async def serve() -> None:
 
         from LoanFormFactory import LoanFormFactory
         client1 = await client_factory.create_client("Tava", "tpr", "poe67")
-        await LoanFormFactory.create_loan_form("F", 9000, 30, client1)
+        loan1 = await LoanFormFactory.create_loan_form(0, 1, 1, 1, 1, 0, 9000, 30, client1)
         client2 = await client_factory.create_client("Mana", "mana", "man67")
-        await LoanFormFactory.create_loan_form("M", 12000, 20, client2)
+        await LoanFormFactory.create_loan_form(0, 1, 1, 1, 1, 0, 12000, 20, client2)
         client3 = await client_factory.create_client("Bruce", "bru", "bru67")
-        await LoanFormFactory.create_loan_form("M", 8000, 32, client3)
+        await LoanFormFactory.create_loan_form(0, 1, 1, 1, 1, 0, 8000, 32, client3)
+
+        from Predictor import Predictor
+        a = Predictor.predict([[loan1.gender, loan1.married, loan1.self_employed, loan1.education,
+                                loan1.credit_history, loan1.property_area]])
+        if a == 0:
+            print("Loan rejected")
+        else:
+            print("Loan approved")
 
     await query()
 
@@ -69,10 +79,5 @@ async def serve() -> None:
 
 
 if __name__ == '__main__':
-    # asyncio.run(serve())
-    from Predictor import Predictor
-    a=Predictor.predict([[1,1,1,1,1.0,2]])
-    if(a==0):
-        print("Loan rejected")
-    else:
-        print("Loan approved")
+    asyncio.run(serve())
+
