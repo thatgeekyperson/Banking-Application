@@ -6,7 +6,10 @@
     Project7> npm start
     React app starts at localhost:3000
 
-### Second the flask app next
+### Run the local postgres instance
+    The username:password for the current application is postgres:password
+
+### Then the flask app next
     Project7/LoanPrediction> flask run
     Flask app starts at localhost:5000
 
