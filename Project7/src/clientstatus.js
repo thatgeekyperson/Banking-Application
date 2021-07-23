@@ -56,7 +56,7 @@ const ClientStatus = ({clientId}) => {
       <div>Loan Amount: {loan_amount} <br/>Loan Term: {loan_term} <br/>Loan Amount Remaining: {loan_amount_remaining}<br/></div>
       <br/>
       { message === "Success" &&
-        <div>Loan Approved.</div>
+        <div>Loan Approved. Please pay it back xD</div>
       }
       { message === "Success" &&
         <ul dangerouslySetInnerHTML={{__html: transactions}}></ul>

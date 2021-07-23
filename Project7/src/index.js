@@ -16,11 +16,14 @@ const App = () => {
 
   const [loggedIn, setLoggedIn] = useState('false');
   const [clientId, setClientId] = useState(null);
+  // sessionStorage.setItem("loggedIn", "false");
+  // sessionStorage.setItem("clientId", null);
+  
   useEffect(() => {
-    setLoggedIn(sessionStorage.getItem("loggedIn"))
-    setClientId(sessionStorage.getItem("clientId"))
+    setLoggedIn(sessionStorage.getItem("loggedIn") === null ? 'false' : sessionStorage.getItem("loggedIn"));
+    setClientId(sessionStorage.getItem("clientId"));
     console.log("in effect: " + sessionStorage.getItem("loggedIn") + " " + sessionStorage.getItem("clientId") ) //+ " " +  loggedIn + " " +  clientId
-  }, [loggedIn]);
+  }, []);
 
   return (
     <BrowserRouter>
